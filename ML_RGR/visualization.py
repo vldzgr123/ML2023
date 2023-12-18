@@ -2,15 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import os 
 import streamlit as st
-
-
-data = pd.read_csv("csgo_task.csv")
 
 
 class VisualizationCommand:
     def __init__(self, data):
-        self.data = self.data
+        self.data = data
 
     def HeatMap(self):
         df_num = self.data.select_dtypes(include=np.number)
@@ -34,11 +32,13 @@ class VisualizationCommand:
         columns = ["ct_money", "t_money"]
         for col in columns:
             plt.figure(figsize=(8, 6))
-            sns.histplot(df[col], bins=100, kde=True)
+            sns.histplot(self.data[col], bins=100, kde=True)
             plt.title(f"Гистограмма для {col}")
             st.pyplot(plt)
 
     def PieСhart(self):
-        fig1, ax1 = plt.subplots()
-        ax1.pie(data["bomb_planted"].value_counts(), labels=data["bomb_planted"].values)
-        plt.show()
+        plt.figure(figsize=(8, 8))
+        self.data["bomb_planted"].value_counts().plot.pie(autopct='%1.1f%%')
+        plt.title("bomb_planted")
+        plt.ylabel('')
+        st.pyplot(plt)
