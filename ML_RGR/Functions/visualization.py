@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import os 
 import streamlit as st
 
 
@@ -38,7 +37,7 @@ class VisualizationCommand:
 
     def PieСhart(self):
         plt.figure(figsize=(8, 8))
-        self.data["bomb_planted"].value_counts().plot.pie(autopct='%1.1f%%')
+        self.data["bomb_planted"].value_counts().plot.pie(autopct="%1.1f%%")
         plt.title("bomb_planted")
-        plt.ylabel('')
+        plt.ylabel("")
         st.pyplot(plt)
