@@ -1,19 +1,19 @@
 import streamlit as st
 import pickle
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+import keras
 
 
 def Teacher():
     st.title("Модель обучения")
-    models = ["k-NN", "Logistic Regression", "SVM"]
+    models = ["KNN", "Logistic Regression", "SVM"]
 
     return st.selectbox("Выберите модель", models)
 
 
 def WithoutTeacher():
     st.title("Модель обучения")
-    models = ["CART", "KMeans", "DBSCAN"]
+    models = ["KMeans", "DBSCAN"]
 
     return st.selectbox("Выберите модель", models)
 
@@ -39,7 +39,6 @@ def ModelTypeSelector(model_type):
             return Ancemble()
         case "Нейронная сеть":
             return NN()
-
 
 def FeaturesSelect():
     st.write("time_left - длительность раунда")
@@ -113,7 +112,7 @@ def FeaturesSelect():
             "t_players_alive": [t_players_alive],
         }
     )
-    
+
     st.write(data)
 
     return data
@@ -124,32 +123,36 @@ def ModelPrediction(model, data):
 
     match model:
         case "k-NN":
-            with open("ML_RGR\Models\KNN.pkl", "rb") as file:
+            with open("ML_RGR\Models\KNN.pickle", "rb") as file:
                 knn = pickle.load(file)
             knn_pred = knn.predict(data)[0]
             st.write(knn_pred)
         case "Logistic Regression":
-            with open("ML_RGR\Models\LG.pkl", "rb") as file:
+            with open("ML_RGR\Models\LG.pickle", "rb") as file:
                 lg = pickle.load(file)
             lg_pred = lg.predict(data)[0]
             st.write(lg_pred)
         case "SVM":
-            with open("ML_RGR\Models\SVM.pkl", "rb") as file:
+            with open("ML_RGR\Models\SVM.pickle", "rb") as file:
                 svc = pickle.load(file)
             svc_pred = svc.predict(data)[0]
             st.write(svc_pred)
-        case "SVM":
-            with open("ML_RGR\Models\SVM.pkl", "rb") as file:
+        case "KNN":
+            with open("ML_RGR\Models\KNN.pickle", "rb") as file:
                 svc = pickle.load(file)
             svc_pred = svc.predict(data)[0]
             st.write(svc_pred)
-        case "SVM":
-            with open("ML_RGR\Models\SVM.pkl", "rb") as file:
+        case "KMeans":
+            with open("ML_RGR\Models\KMEANS.pickle", "rb") as file:
                 svc = pickle.load(file)
             svc_pred = svc.predict(data)[0]
             st.write(svc_pred)
-        case "SVM":
-            with open("ML_RGR\Models\SVM.pkl", "rb") as file:
+        case "DBSCAN":
+            with open("ML_RGR\Models\DBSCAN.pickle", "rb") as file:
                 svc = pickle.load(file)
-            svc_pred = svc.predict(data)[0]
+            svc_pred = svc.labels_
+            st.write(svc_pred)
+        case "NN":
+            model_loaded = keras.models.load_model("ML_RGR/Models/NN.h5")
+            svc_pred = model_loaded.predict(data)[0][0]
             st.write(svc_pred)

@@ -1,15 +1,13 @@
 import streamlit as st
-from Functions.selectModelFunc import * 
+from Functions.selectModelFunc import *
 import pandas as pd
-import numpy as np
-import pickle
 
 uploaded_file = st.file_uploader("Выберите файл датасет", type="csv")
 
-data = pd.read_csv(uploaded_file)
-
-if data is not None:
+if uploaded_file is not None:
     
+    data = pd.read_csv(uploaded_file)
+
     st.title("Предсказание поставлена ли бомба")
 
     type_model_select = st.selectbox(

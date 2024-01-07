@@ -2,8 +2,6 @@ import streamlit as st
 
 from st_pages import Page, Section, show_pages, add_page_title
 
-# st.set_page_config(page_title = "New Name")
-
 show_pages(
     [
         Page("ML_RGR\web_1.py", "Об авторе"),
@@ -13,4 +11,4 @@ show_pages(
     ]
 )
 
-st.title("Расчетно-графическая работа")
+st.title('Расчетно-графическая работа по дисциплине "Машинное обучение"')
