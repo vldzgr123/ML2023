@@ -40,6 +40,7 @@ def ModelTypeSelector(model_type):
         case "Нейронная сеть":
             return NN()
 
+
 def FeaturesSelect():
     st.write("time_left - длительность раунда")
 
@@ -154,5 +155,20 @@ def ModelPrediction(model, data):
             st.write(svc_pred)
         case "NN":
             model_loaded = keras.models.load_model("ML_RGR/Models/NN.h5")
-            svc_pred = model_loaded.predict(data)[0][0]
-            st.write(svc_pred)
+            NN_pred = model_loaded.predict(data)[0][0]
+            st.write(NN_pred)
+        case "Bagging":
+            with open("ML_RGR\Models\Bagging.pickle", "rb") as file:
+                Bagging = pickle.load(file)
+            Bagging_pred = Bagging.predict(data)[0]
+            st.write(Bagging_pred)
+        case "Gradient":
+            with open("ML_RGR\Models\Gradient.pickle", "rb") as file:
+                Gradient = pickle.load(file)
+            Gradient_pred = Gradient.predict(data)[0]
+            st.write(Gradient_pred)
+        case "Bagging":
+            with open("ML_RGR\Models\Bagging.pickle", "rb") as file:
+                Bagging = pickle.load(file)
+            Bagging_pred = Bagging.predict(data)[0]
+            st.write(Gradient_pred)
