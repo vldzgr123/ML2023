@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import keras
+import numpy as np
 
 
 def Teacher():
@@ -151,24 +152,24 @@ def ModelPrediction(model, data):
         case "DBSCAN":
             with open("ML_RGR\Models\DBSCAN.pickle", "rb") as file:
                 svc = pickle.load(file)
-            svc_pred = svc.labels_
-            st.write(svc_pred)
+            svc_pred = svc.fit(data)
+            st.write(svc_pred.labels_)
         case "NN":
             model_loaded = keras.models.load_model("ML_RGR/Models/NN.h5")
-            NN_pred = model_loaded.predict(data)[0][0]
+            NN_pred = np.around(model_loaded.predict(data)[0][0])
             st.write(NN_pred)
         case "Bagging":
             with open("ML_RGR\Models\Bagging.pickle", "rb") as file:
                 Bagging = pickle.load(file)
             Bagging_pred = Bagging.predict(data)[0]
             st.write(Bagging_pred)
-        case "Gradient":
+        case "Gradient Boosting":
             with open("ML_RGR\Models\Gradient.pickle", "rb") as file:
                 Gradient = pickle.load(file)
             Gradient_pred = Gradient.predict(data)[0]
             st.write(Gradient_pred)
-        case "Bagging":
-            with open("ML_RGR\Models\Bagging.pickle", "rb") as file:
-                Bagging = pickle.load(file)
-            Bagging_pred = Bagging.predict(data)[0]
-            st.write(Gradient_pred)
+        case "Stacking":
+            with open("ML_RGR\Models\Stacking.pickle", "rb") as file:
+                Stacking = pickle.load(file)
+            Stacking_pred = Stacking.predict(data)[0]
+            st.write(Stacking_pred)
