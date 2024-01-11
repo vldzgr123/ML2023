@@ -13,10 +13,7 @@ def Teacher():
 
 
 def WithoutTeacher():
-    st.title("Модель обучения")
-    models = ["KMeans", "DBSCAN"]
-
-    return st.selectbox("Выберите модель", models)
+    return "KMeans"
 
 
 def Ancemble():
@@ -124,11 +121,6 @@ def ModelPrediction(model, data):
     st.write("Предсказанное значение:")
 
     match model:
-        case "k-NN":
-            with open("ML_RGR\Models\KNN.pickle", "rb") as file:
-                knn = pickle.load(file)
-            knn_pred = knn.predict(data)[0]
-            st.write(knn_pred)
         case "Logistic Regression":
             with open("ML_RGR\Models\LG.pickle", "rb") as file:
                 lg = pickle.load(file)
@@ -141,19 +133,14 @@ def ModelPrediction(model, data):
             st.write(svc_pred)
         case "KNN":
             with open("ML_RGR\Models\KNN.pickle", "rb") as file:
-                svc = pickle.load(file)
-            svc_pred = svc.predict(data)[0]
-            st.write(svc_pred)
+                knn = pickle.load(file)
+            knn_pred = knn.predict(data)[0]
+            st.write(knn_pred)
         case "KMeans":
             with open("ML_RGR\Models\KMEANS.pickle", "rb") as file:
-                svc = pickle.load(file)
-            svc_pred = svc.predict(data)[0]
-            st.write(svc_pred)
-        case "DBSCAN":
-            with open("ML_RGR\Models\DBSCAN.pickle", "rb") as file:
-                svc = pickle.load(file)
-            svc_pred = svc.fit(data)
-            st.write(svc_pred.labels_)
+                kmeans = pickle.load(file)
+            kmeans_pred = kmeans.predict(data)[0]
+            st.write(kmeans_pred)
         case "NN":
             model_loaded = keras.models.load_model("ML_RGR/Models/NN.h5")
             NN_pred = np.around(model_loaded.predict(data)[0][0])
