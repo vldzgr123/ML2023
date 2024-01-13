@@ -1,0 +1,8 @@
+pandas
+PIL
+keras
+pickle
+numpy
+st_pages
+seaborn
+matplotlib
