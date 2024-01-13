@@ -1,9 +1,8 @@
 pandas
-PIL
+Pillow
 keras
 pickle
 numpy
 st_pages
 seaborn
 matplotlib
---upgrade pip
