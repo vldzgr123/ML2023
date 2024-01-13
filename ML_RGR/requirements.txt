@@ -7,3 +7,4 @@ st_pages
 seaborn
 matplotlib
 tensorflow
+sklearn
