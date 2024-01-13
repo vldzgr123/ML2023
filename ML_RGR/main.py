@@ -3,10 +3,10 @@ from st_pages import Page, show_pages
 
 show_pages(
     [
-        Page("ML_RGR\web_1.py", "Об авторе"),
-        Page("ML_RGR\web_2.py", "О датасете"),
-        Page("ML_RGR\web_3.py", "Визуализация"),
-        Page("ML_RGR\web_4.py", "Предсказание модели"),
+        Page("web_1.py", "Об авторе"),
+        Page("web_2.py", "О датасете"),
+        Page("web_3.py", "Визуализация"),
+        Page("web_4.py", "Предсказание модели"),
     ]
 )
 
