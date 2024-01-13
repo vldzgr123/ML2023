@@ -11,6 +11,6 @@ st.write(
 
 #Загрузка фотографии
 st.image(
-    Image.open("ML_RGR\Pictures\web_1_pictures\photo_2023-07-30_15-17-12.jpg"),
+    Image.open("ML_RGR/Pictures/web_1_pictures/photo_2023-07-30_15-17-12.jpg"),
     width=450,
 )

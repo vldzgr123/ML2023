@@ -130,22 +130,22 @@ def ModelPrediction(model, data):
 
     match model:
         case "Logistic Regression":
-            with open("ML_RGR\Models\LG.pickle", "rb") as file:
+            with open("ML_RGR/Models/LG.pickle", "rb") as file:
                 lg = pickle.load(file)
             lg_pred = lg.predict(data)[0]
             st.write(lg_pred)
         case "SVM":
-            with open("ML_RGR\Models\SVM.pickle", "rb") as file:
+            with open("ML_RGR/Models/SVM.pickle", "rb") as file:
                 svc = pickle.load(file)
             svc_pred = svc.predict(data)[0]
             st.write(svc_pred)
         case "KNN":
-            with open("ML_RGR\Models\KNN.pickle", "rb") as file:
+            with open("ML_RGR/Models/KNN.pickle", "rb") as file:
                 knn = pickle.load(file)
             knn_pred = knn.predict(data)[0]
             st.write(knn_pred)
         case "KMeans":
-            with open("ML_RGR\Models\KMEANS.pickle", "rb") as file:
+            with open("ML_RGR/Models/KMEANS.pickle", "rb") as file:
                 kmeans = pickle.load(file)
             kmeans_pred = kmeans.predict(data)[0]
             st.write(kmeans_pred)
@@ -154,17 +154,17 @@ def ModelPrediction(model, data):
             NN_pred = np.around(model_loaded.predict(data)[0][0])
             st.write(int(NN_pred))
         case "Bagging":
-            with open("ML_RGR\Models\Bagging.pickle", "rb") as file:
+            with open("ML_RGR/Models/Bagging.pickle", "rb") as file:
                 Bagging = pickle.load(file)
             Bagging_pred = Bagging.predict(data)[0]
             st.write(Bagging_pred)
         case "Gradient Boosting":
-            with open("ML_RGR\Models\Gradient.pickle", "rb") as file:
+            with open("ML_RGR/Models/Gradient.pickle", "rb") as file:
                 Gradient = pickle.load(file)
             Gradient_pred = Gradient.predict(data)[0]
             st.write(Gradient_pred)
         case "Stacking":
-            with open("ML_RGR\Models\Stacking.pickle", "rb") as file:
+            with open("ML_RGR/Models/Stacking.pickle", "rb") as file:
                 Stacking = pickle.load(file)
             Stacking_pred = Stacking.predict(data)[0]
             st.write(Stacking_pred)
