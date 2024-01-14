@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 
-vis = VisualizationCommand(
+vis = Visualization(
     pd.read_csv("ML_RGR/csgo_task.csv").drop("Unnamed: 0", axis=1)
 )
 

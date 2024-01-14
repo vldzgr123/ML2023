@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 
 
-class VisualizationCommand:
+class Visualization:
     def __init__(self, data):
         self.data = data
 
